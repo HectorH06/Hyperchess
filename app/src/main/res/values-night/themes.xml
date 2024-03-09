@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.Chesso" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/p0</item>
+        <item name="colorPrimaryVariant">@color/p2</item>
+        <item name="colorOnPrimary">@color/x0</item>
+        <item name="colorSecondary">@color/c1</item>
+        <item name="colorSecondaryVariant">@color/c1</item>
+        <item name="colorOnSecondary">@color/x0</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    </style>
+</resources>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Purple -->
+    <color name="p0">#FF400060</color>
+    <color name="p1">#FF5700A5</color>
+    <color name="p2">#FF7A12E6</color>
+    <color name="p3">#FFD5ABFF</color>
+    <color name="p4">#FFE5CBFF</color>
+    <color name="p5">#FFEFDEFE</color>
+
+    <!-- Red -->
+    <color name="r0">#FFA80B1A</color>
+    <color name="r1">#FFDC3545</color>
+    <color name="r2">#FFEF476F</color>
+    <color name="r3">#FFFF6E6E</color>
+    <color name="r4">#FFFF9AA2</color>
+    <color name="r5">#FFFFC6C7</color>
+
+    <!-- Orange -->
+    <color name="o0">#FFA86502</color>
+    <color name="o1">#FFDC9225</color>
+    <color name="o2">#FFEF873F</color>
+    <color name="o3">#FFE89B57</color>
+    <color name="o4">#FFFFBD9A</color>
+    <color name="o5">#FFFFC6C7</color>
+
+    <!-- Yellow -->
+    <color name="y0">#FFFFBA00</color>
+    <color name="y1">#FFFFCA3A</color>
+    <color name="y2">#FFFFBF5F</color>
+    <color name="y3">#FFFDB813</color>
+    <color name="y4">#FFFDCB6E</color>
+    <color name="y5">#FFFFE7A6</color>
+    <!-- Green -->
+    <color name="g0">#FF073211</color>
+    <color name="g1">#FF135C24</color>
+    <color name="g2">#FF3AA824</color>
+    <color name="g3">#FFA3E635</color>
+    <color name="g4">#FFB4ED50</color>
+    <color name="g5">#FFC9F7B9</color>
+
+    <!-- Cyan -->
+    <color name="c0">#FF95F3EA</color>
+    <color name="c1">#FF60EFEF</color>
+    <color name="c2">#FF40E3D3</color>
+    <color name="c3">#FF0EB8B7</color>
+    <color name="c4">#FF018786</color>
+    <color name="c5">#FF035C5B</color>
+
+    <!-- Blue -->
+    <color name="b0">#FF124A88</color>
+    <color name="b1">#FF046DC8</color>
+    <color name="b2">#FF3DADF2</color>
+    <color name="b3">#FF85C1E9</color>
+    <color name="b4">#FFAFDCEC</color>
+    <color name="b5">#FFC7E7F3</color>
+    <color name="b6">#FFD6F2F8</color>
+
+    <!-- X for b&w themes -->
+    <color name="x0">#FF0A0A0A</color>
+    <color name="x1">#F222</color>
+    <color name="x2">#FF2B2D42</color>
+    <color name="x3">#FF8D99AE</color>
+    <color name="x4">#FFEDF2F4</color>
+    <color name="x5">#FFFF</color>
+</resources>
