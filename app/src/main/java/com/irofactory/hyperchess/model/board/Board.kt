@@ -1,6 +1,7 @@
 package com.irofactory.hyperchess.model.board
 
 import android.os.Parcelable
+import android.util.Log
 import com.irofactory.hyperchess.model.board.Position.*
 import com.irofactory.hyperchess.model.move.PieceEffect
 import com.irofactory.hyperchess.model.piece.*
@@ -54,6 +55,12 @@ data class Board(
 
     fun apply(effect: PieceEffect?): Board =
         effect?.applyOn(this) ?: this
+
+    fun minus(positions: List<Position>): Board {
+        Log.v("positions", "$positions")
+        val newPieces = pieces.filterNot { (position, _) -> position in positions }
+        return copy(pieces = newPieces)
+    }
 }
 
 private val initialPieces = mapOf(

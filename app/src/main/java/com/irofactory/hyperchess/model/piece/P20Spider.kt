@@ -29,14 +29,10 @@ class P20Spider(override val set: Set) : Piece {
         gameSnapshotState: GameSnapshotState,
         checkCheck: Boolean
     ): List<BoardMove> {
-        val moves = mutableListOf<BoardMove>()
-
-        for (direction in targets) {
-            moves += limitedMobility(gameSnapshotState, listOf(direction), maxDistance = 3)
-            moves += captureArea3x3(gameSnapshotState, direction.first, direction.second)
-        }
-
-        return moves
+        return targets
+            .mapNotNull { limitedMobility(gameSnapshotState, listOf(it), maxDistance = 1, attackPoints = 4) }
+            .flatten()
+            .toMutableList()
     }
 
     companion object {

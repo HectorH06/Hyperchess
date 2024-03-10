@@ -88,6 +88,60 @@ data class Capture(
         board.copy(
             pieces = board.pieces.minus(position)
         )
+
+    fun applyEffects(board: Board, effects: List<PieceEffect>): Board {
+        var updatedBoard = board
+        for (effect in effects) {
+            updatedBoard = effect.applyOn(updatedBoard)
+        }
+        return updatedBoard
+    }
+}
+
+@Parcelize
+data class CaptureArea3x3(
+    override val piece: Piece,
+    val position: Position,
+) : PreMove, PieceEffect {
+
+    override fun applyOn(board: Board): Board {
+        val piecesToRemove = mutableListOf<Position>()
+
+        for (i in -1..1) {
+            for (j in -1..1) {
+                val target = board[position.file + i, position.rank + j] ?: continue
+
+                if (target.isNotEmpty) {
+                    piecesToRemove.add(target.position)
+                }
+            }
+        }
+
+        return board.minus(piecesToRemove)
+    }
+}
+
+@Parcelize
+data class CaptureArea7x7(
+    override val piece: Piece,
+    val position: Position,
+) : PreMove, PieceEffect {
+
+    override fun applyOn(board: Board): Board {
+        val piecesToRemove = mutableListOf<Position>()
+
+        for (i in -3..3) {
+            for (j in -3..3) {
+                val target = board[position.file + i, position.rank + j] ?: continue
+
+                if (target.isNotEmpty) {
+                    piecesToRemove.add(target.position)
+                }
+            }
+        }
+
+        return board.minus(piecesToRemove)
+    }
 }
 
 @Parcelize
