@@ -8,7 +8,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.irofactory.hyperchess.ui.base.ChessoTheme
+import com.irofactory.hyperchess.ui.base.hyperTheme
 import com.irofactory.hyperchess.ui.app.Game
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
             else -> null
         }
         setContent {
-            ChessoTheme {
+            hyperTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
                     Game(importGameText = importGameText)
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 @Composable
 @Preview(showBackground = true)
 fun DefaultPreview() {
-    ChessoTheme {
+    hyperTheme {
         Game()
     }
 }

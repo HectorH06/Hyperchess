@@ -10,7 +10,7 @@ import com.irofactory.hyperchess.model.piece.P45King
 import com.irofactory.hyperchess.model.piece.P39Queen
 import com.irofactory.hyperchess.model.piece.P10Rook
 import com.irofactory.hyperchess.model.piece.Set
-import com.irofactory.hyperchess.ui.base.ChessoTheme
+import com.irofactory.hyperchess.ui.base.hyperTheme
 import com.irofactory.hyperchess.ui.app.Preset
 
 object ThreefoldRepetitionPreset : Preset {
@@ -38,7 +38,7 @@ object ThreefoldRepetitionPreset : Preset {
 @Preview(showBackground = true)
 @Composable
 fun ThreefoldRepetitionPresetPreview() {
-    ChessoTheme {
+    hyperTheme {
         Preset(ThreefoldRepetitionPreset)
     }
 }

@@ -12,7 +12,7 @@ import com.irofactory.hyperchess.model.game.controller.GameController
 import com.irofactory.hyperchess.model.game.state.GamePlayState
 import com.irofactory.hyperchess.model.game.state.GameSnapshotState
 import com.irofactory.hyperchess.model.game.state.UiState
-import com.irofactory.hyperchess.ui.base.ChessoTheme
+import com.irofactory.hyperchess.ui.base.hyperTheme
 import com.irofactory.hyperchess.ui.chess.board.BoardRenderProperties
 import com.irofactory.hyperchess.ui.chess.board.DefaultBoardRenderer
 
@@ -63,7 +63,7 @@ fun Board(
 @Preview(showBackground = true)
 @Composable
 fun BoardPreview() {
-    ChessoTheme {
+    hyperTheme {
         var gamePlayState = GamePlayState()
         val gameController = GameController({ gamePlayState }, { gamePlayState = it }).apply {
             applyMove(e2, e4)

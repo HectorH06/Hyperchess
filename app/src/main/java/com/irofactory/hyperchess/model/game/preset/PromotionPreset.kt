@@ -11,7 +11,7 @@ import com.irofactory.hyperchess.model.piece.P10Knight
 import com.irofactory.hyperchess.model.piece.P00Pawn
 import com.irofactory.hyperchess.model.piece.Set.BLACK
 import com.irofactory.hyperchess.model.piece.Set.WHITE
-import com.irofactory.hyperchess.ui.base.ChessoTheme
+import com.irofactory.hyperchess.ui.base.hyperTheme
 import com.irofactory.hyperchess.ui.app.Preset
 
 object PromotionPreset : Preset {
@@ -39,7 +39,7 @@ object PromotionPreset : Preset {
 @Preview(showBackground = true)
 @Composable
 fun PromotionPresetPreview() {
-    ChessoTheme {
+    hyperTheme {
         Preset(PromotionPreset)
     }
 }

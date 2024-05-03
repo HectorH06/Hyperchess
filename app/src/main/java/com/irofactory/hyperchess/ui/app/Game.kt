@@ -36,7 +36,7 @@ import com.irofactory.hyperchess.model.game.preset.Preset
 import com.irofactory.hyperchess.model.game.state.GamePlayState
 import com.irofactory.hyperchess.model.game.state.GameState
 import com.irofactory.hyperchess.model.piece.Set
-import com.irofactory.hyperchess.ui.base.ChessoTheme
+import com.irofactory.hyperchess.ui.base.hyperTheme
 import com.irofactory.hyperchess.ui.chess.Board
 import com.irofactory.hyperchess.ui.chess.CapturedPieces
 import com.irofactory.hyperchess.ui.chess.Moves
@@ -207,7 +207,7 @@ private fun GameControls(
 @Preview(showBackground = true)
 @Composable
 fun GamePreview() {
-    ChessoTheme {
+    hyperTheme {
         var gamePlayState = GamePlayState()
         GameController({ gamePlayState }, { gamePlayState = it }).apply {
             applyMove(e2, e4)

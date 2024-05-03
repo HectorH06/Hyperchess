@@ -8,19 +8,19 @@ import com.irofactory.hyperchess.model.piece.Set.WHITE
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-class P20Spider(override val set: Set) : Piece {
+class P02Gunslinger(override val set: Set) : Piece {
 
-    override val value: Int = 3
+    override val value: Int = 5
 
     override val asset: Int =
         when (set) {
-            WHITE -> R.drawable.__20_spider
-            BLACK -> R.drawable._20_spider
+            WHITE -> R.drawable.__02_gunslinger
+            BLACK -> R.drawable._02_gunslinger
         }
 
     override val symbol: String = when (set) {
-        WHITE -> "Spi"
-        BLACK -> "Spi"
+        WHITE -> "Gun"
+        BLACK -> "Gun"
     }
 
     override val textSymbol: String = SYMBOL
@@ -30,13 +30,13 @@ class P20Spider(override val set: Set) : Piece {
         checkCheck: Boolean
     ): List<BoardMove> {
         return targets
-            .mapNotNull { limitedMobility(gameSnapshotState, listOf(it), mobilityPoints = 2, attackPoints = 2, specialPoints = 1) }
+            .mapNotNull { limitedMobility(gameSnapshotState, listOf(it), mobilityPoints = 1, attackPoints = 4) }
             .flatten()
             .toMutableList()
     }
 
     companion object {
-        const val SYMBOL = "Spi"
+        const val SYMBOL = "Gun"
         val targets = listOf(
             -1 to -1,
             -1 to 0,

@@ -17,7 +17,7 @@ import com.irofactory.hyperchess.model.piece.Set
  * Shows a colour only if the number is 0, meaning the piece is blocked from moving.
  */
 abstract class KingsEscapeSquares(
-    private val set: Set,
+    internal val set: Set,
     private val colorScale: Pair<Color, Color>
 ) : DatasetVisualisation {
 

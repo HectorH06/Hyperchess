@@ -114,5 +114,6 @@ private val initialPieces = mapOf(
     i1 to P10Knight(WHITE),
     j1 to P10Knight(WHITE),
     k1 to P10Rook(WHITE),
-    g6 to P20Spider(WHITE),
+    g6 to P02Gunslinger(WHITE),
+    g8 to P01Fire(WHITE)
 )

@@ -26,5 +26,5 @@ class P39Queen(override val set: Set) : Piece {
     override val textSymbol: String = "Q"
 
     override fun pseudoLegalMoves(gameSnapshotState: GameSnapshotState, checkCheck: Boolean): List<BoardMove> =
-        unlimitedMobility(gameSnapshotState, P10Rook.directions + P10Bishop.directions)
+        unlimitedMobilityLegacy(gameSnapshotState, P10Rook.directions + P10Bishop.directions)
 }

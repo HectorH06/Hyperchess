@@ -29,7 +29,7 @@ fun Piece.singleMobility(
     }
 }
 
-fun Piece.unlimitedMobility(
+fun Piece.unlimitedMobilityLegacy( // TODO remove this function, replace all usages with Piece.limitedMobility
     gameSnapshotState: GameSnapshotState,
     directions: List<Pair<Int, Int>>,
 ) : List<BoardMove> {
@@ -38,13 +38,13 @@ fun Piece.unlimitedMobility(
     val square = board.find(this) ?: return emptyList()
 
     directions.map {
-        moves += unlimitedMobility(board, square, it.first, it.second)
+        moves += unlimitedMobilityLegacy(board, square, it.first, it.second)
     }
 
     return moves
 }
 
-fun unlimitedMobility(
+fun unlimitedMobilityLegacy(
     board: Board,
     square: Square,
     deltaFile: Int,
@@ -56,6 +56,7 @@ fun unlimitedMobility(
 
     var i = 0
     while (true) {
+        // TODO hacer un when con cada uno de los casos de movilidad
         i++
         val target = board[square.file + deltaFile * i, square.rank + deltaRank * i] ?: break
         if (target.hasPiece(set)) {
@@ -82,36 +83,40 @@ fun unlimitedMobility(
 fun Piece.limitedMobility(
     gameSnapshotState: GameSnapshotState,
     directions: List<Pair<Int, Int>>,
-    maxDistance: Int = 2,
-    attackPoints: Int = 0
+    mobilityPoints: Int = 2,
+    attackPoints: Int = 3,
+    specialPoints: Int = 0,
 ): List<BoardMove> {
     var moves = mutableListOf<BoardMove>()
     val board = gameSnapshotState.board
     val square = board.find(this) ?: return emptyList()
 
+    val maxDistance = when (mobilityPoints) {
+        0 -> 1
+        1 -> 2
+        2 -> 3
+        3 -> 4
+        4, 5 -> 12
+        else -> 12
+    }
     directions.forEach { (deltaFile, deltaRank) ->
         for (i in 1..maxDistance) {
             val target = board[square.file + deltaFile * i, square.rank + deltaRank * i] ?: break
 
-            if (target.hasPiece(set)) {
+            if (target.hasPiece(set) && (mobilityPoints != 4 || attackPoints != 4)) {
                 break
             }
 
             val move = Move(piece = this, intent = MoveIntention(from = square.position, to = target.position))
-
-            if (target.isEmpty) {
-                moves += BoardMove(move)
-                continue
-            }
-
             var auxMoves = BoardMove(move)
             if (attackPoints == 4) {
-                for (j in 2..4) {
+                for (j in 1..4) {
 
                     val target4 = board[square.file + deltaFile * j, square.rank + deltaRank * j] ?: break
 
                     val move4 = Move(piece = this, intent = MoveIntention(from = square.position, to = target4.position))
-                    if (target4.isNotEmpty) {
+
+                    if (target4.isNotEmpty && j != 1){
                         moves += BoardMove(move4)
                         continue
                     }
@@ -123,6 +128,22 @@ fun Piece.limitedMobility(
                     }
                 }
             }
+            if (attackPoints == 5) {
+                for (j in 0..1) {
+
+                    val target5 = board[square.file + deltaFile * j, square.rank + deltaRank * j] ?: break
+
+                    val move5 = Move(piece = this, intent = MoveIntention(from = square.position, to = target5.position))
+
+                    if (target5.hasPiece(set.opposite())) {
+                        auxMoves = BoardMove(
+                            move = move5,
+                            preMove = CaptureArea7x7(target5.piece!!, target5.position),
+                        )
+                    }
+                }
+            }
+
             if (target.hasPiece(set.opposite())) {
                 moves += when (attackPoints) {
                     0 -> break
@@ -144,15 +165,7 @@ fun Piece.limitedMobility(
                             preMove = CaptureArea3x3(target.piece!!, target.position),
                         )
                     }
-                    4 -> {
-                        auxMoves
-                    }
-                    5 -> {
-                        BoardMove(
-                            move = move,
-                            preMove = CaptureArea7x7(target.piece!!, target.position),
-                        )
-                    }
+                    4, 5 -> auxMoves
                     else -> BoardMove(
                             move = move,
                             preMove = Capture(target.piece!!, target.position)
@@ -161,6 +174,11 @@ fun Piece.limitedMobility(
 
                 break
             }
+
+            if (target.isEmpty) {
+                moves += BoardMove(move)
+                continue
+            }
         }
     }
 
@@ -168,7 +186,7 @@ fun Piece.limitedMobility(
 }
 
 /* TODO esto sirve para atravesar
-fun Piece.limitedMobility(
+fun Piece.penetrationMobility(
     gameSnapshotState: GameSnapshotState,
     directions: List<Pair<Int, Int>>,
     maxDistance: Int = 2,

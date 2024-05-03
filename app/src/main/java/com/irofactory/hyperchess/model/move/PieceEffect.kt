@@ -3,6 +3,7 @@ package com.irofactory.hyperchess.model.move
 import android.os.Parcelable
 import com.irofactory.hyperchess.model.board.Board
 import com.irofactory.hyperchess.model.board.Position
+import com.irofactory.hyperchess.model.dataviz.impl.WhiteKingsEscape.set
 import com.irofactory.hyperchess.model.piece.Piece
 import kotlinx.parcelize.Parcelize
 
@@ -111,7 +112,7 @@ data class CaptureArea3x3(
             for (j in -1..1) {
                 val target = board[position.file + i, position.rank + j] ?: continue
 
-                if (target.isNotEmpty) {
+                if (target.hasPiece(set.opposite())) {
                     piecesToRemove.add(target.position)
                 }
             }
@@ -134,7 +135,7 @@ data class CaptureArea7x7(
             for (j in -3..3) {
                 val target = board[position.file + i, position.rank + j] ?: continue
 
-                if (target.isNotEmpty) {
+                if (target.hasPiece(set.opposite())) { // still thinking about setting the condition to target.isNotEmpty with balance purposes
                     piecesToRemove.add(target.position)
                 }
             }

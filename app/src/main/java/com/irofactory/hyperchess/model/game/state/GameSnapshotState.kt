@@ -18,7 +18,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class GameSnapshotState(
     val board: Board = Board(),
-    val toMove: Set = Set.WHITE,
+    val toMove: Set = WHITE,
     val resolution: Resolution = Resolution.IN_PROGRESS,
     val move: AppliedMove? = null,
     val lastMove: AppliedMove? = null,

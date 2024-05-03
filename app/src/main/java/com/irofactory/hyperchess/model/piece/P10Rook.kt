@@ -26,7 +26,7 @@ class P10Rook(override val set: Set) : Piece {
     override val textSymbol: String = "R"
 
     override fun pseudoLegalMoves(gameSnapshotState: GameSnapshotState, checkCheck: Boolean): List<BoardMove> =
-        unlimitedMobility(gameSnapshotState, directions)
+        unlimitedMobilityLegacy(gameSnapshotState, directions)
 
     companion object {
         val directions = listOf(

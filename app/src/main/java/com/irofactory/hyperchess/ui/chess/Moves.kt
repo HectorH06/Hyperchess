@@ -25,7 +25,7 @@ import com.irofactory.hyperchess.model.move.AppliedMove
 import com.irofactory.hyperchess.model.game.controller.GameController
 import com.irofactory.hyperchess.model.board.Position.*
 import com.irofactory.hyperchess.model.game.state.GamePlayState
-import com.irofactory.hyperchess.ui.base.ChessoTheme
+import com.irofactory.hyperchess.ui.base.hyperTheme
 import com.irofactory.hyperchess.ui.base.r03
 import com.irofactory.hyperchess.ui.base.x03
 import com.irofactory.hyperchess.ui.base.b04
@@ -117,7 +117,7 @@ private fun Modifier.pill(isHighlighted: Boolean) =
 @Preview
 @Composable
 fun MovesPreview() {
-    ChessoTheme {
+    hyperTheme {
         var gamePlayState = GamePlayState()
         GameController({ gamePlayState }, { gamePlayState = it}).apply {
             applyMove(e2, e4)

@@ -28,7 +28,7 @@ import com.irofactory.hyperchess.model.piece.P10Rook
 import com.irofactory.hyperchess.model.piece.Set
 import com.irofactory.hyperchess.model.piece.Set.BLACK
 import com.irofactory.hyperchess.model.piece.Set.WHITE
-import com.irofactory.hyperchess.ui.base.ChessoTheme
+import com.irofactory.hyperchess.ui.base.hyperTheme
 import kotlin.math.absoluteValue
 
 @Composable
@@ -110,7 +110,7 @@ private fun Score(score: Int) {
 @Preview
 @Composable
 fun TakenPiecesPreview() {
-    ChessoTheme {
+    hyperTheme {
         CapturedPieces(
             gameState = GameState(
                 gameMetaInfo = GameMetaInfo.createWithDefaults(),

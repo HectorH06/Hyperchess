@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.irofactory.hyperchess.model.board.Position.*
 import com.irofactory.hyperchess.model.game.controller.GameController
-import com.irofactory.hyperchess.ui.base.ChessoTheme
+import com.irofactory.hyperchess.ui.base.hyperTheme
 import com.irofactory.hyperchess.ui.app.Preset
 
 object CastlingPreset : Preset {
@@ -40,7 +40,7 @@ object CastlingPreset : Preset {
 @Preview(showBackground = true)
 @Composable
 fun CastlingPresetPreview() {
-    ChessoTheme {
+    hyperTheme {
         Preset(CastlingPreset)
     }
 }
